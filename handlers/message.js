@@ -11,12 +11,14 @@ class MessageHandler {
   }
 
   async handle(message) {
-    if(!this._matcher.isTrue()) {
-      if(this._next) {
-        this._next.handle(message);
-      }
+    if(this._matcher.isTrue()) {
+      await this._handler.execute();
+      return;
     }
-    await this._handler.execute();
+
+    if(this._next) {
+      this._next.handle(message);
+    }
   }
 }
 
