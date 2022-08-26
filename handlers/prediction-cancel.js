@@ -8,7 +8,7 @@ class PredictionCancelHandler {
   }
 
   async execute() {
-    const predictionId = this._msg.text.replace('/prediction-cancel/', '');
+    const predictionId = this._msg.text.replace('/prediction-cancel ', '');
     await this._storage.cancelPrediction(predictionId);
     await this._bot.deleteMessage(this._msg.chatId, this._msg.id);
     await this._bot.sendMessage(this._msg.chatId, new MenuText().asString());

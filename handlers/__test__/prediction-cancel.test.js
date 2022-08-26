@@ -6,7 +6,7 @@ const deleteMessage = jest.fn();
 const options = {
   storage: { cancelPrediction },
   bot: { sendMessage, deleteMessage },
-  msg: { text: '/prediction-cancel/prediction-id' },
+  msg: { text: '/prediction-cancel prediction-id' },
 };
 
 test('should works normal', async () => {

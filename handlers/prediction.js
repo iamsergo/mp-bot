@@ -28,11 +28,11 @@ class PredictionHandler {
           inline_keyboard: [
             [{
               text: '✅ Подтвердить',
-              callback_data: `/prediction-apply/${prePrediction.id}`
+              callback_data: `/prediction-apply ${prePrediction.id}`
             }],
             [{
               text: '🚫 Отменить',
-              callback_data: `/prediction-cancel/${prePrediction.id}`
+              callback_data: `/prediction-cancel ${prePrediction.id}`
             }],
           ]
         })
