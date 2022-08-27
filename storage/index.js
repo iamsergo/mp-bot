@@ -3,6 +3,7 @@ const UpdateUser = require('./update-user');
 const GetGameForTeams = require('./get-game-for-teams');
 const CreatePrediction = require('./create-prediction');
 const ApplyPrediction = require('./apply-prediction');
+const CancelPrediction = require('./cancel-prediction');
 
 class PgStorage {
   constructor() {
@@ -29,6 +30,10 @@ class PgStorage {
 
   async applyPrediction(predictionId) {
     return new ApplyPrediction(this._db, { predictionId }).execute();
+  }
+
+  async cancelPrediction(predictionId) {
+    return new CancelPrediction(this._db, { predictionId }).execute();
   }
 }
 
