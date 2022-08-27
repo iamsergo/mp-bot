@@ -1,3 +1,5 @@
+const { TotalForScore, ResultForScore, DiffForScore } = require("../helpers");
+
 class Prediction {
   constructor(prediction) {
     this._userId = prediction.userId;
