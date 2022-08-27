@@ -8,23 +8,23 @@ class PredictionApplyingHandler {
     this._msg = options.msg;
   }
 
+  async _sendAnswer(text) {
+    await this._bot.deleteMessage(this._msg.chatId, this._msg.id);
+    await this._bot.sendMessage(this._msg.chatId, text);
+  }
+
   async execute() {
     const predictionId = this._msg.text.replace('/prediction-apply ', '');
-    const prePrediction = await this._storage.getPrediction(predictionId);
-    if(prePrediction.startGameTime > Date.now()) {
+    const prediction = await this._storage.applyPrediction(predictionId);
+    if(!prediction) {
       await this._storage.cancelPrediction(predictionId);
-      await this._bot.deleteMessage(this._msg.chatId, this._msg.id);
-      await this._bot.sendMessage(
-        this._msg.chatId,
-        new LatePredictionText(prePrediction).asString()
+      await this._sendAnswer(
+        new LatePredictionText(prediction).asString()
       );
       return;
     }
 
-    const prediction = await this._storage.applyPrediction(predictionId);
-    await this._bot.deleteMessage(this._msg.chatId, this._msg.id);
-    await this._bot.sendMessage(
-      this._msg.chatId,
+    await this._sendAnswer(
       new SuccessApplyingPredictionText(prediction).asString()
     );
   }
