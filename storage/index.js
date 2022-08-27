@@ -20,7 +20,7 @@ class PgStorage {
     return new UpdateUser(this._db, { user }).execute();
   }
 
-  async getGameByTeams(teams) {
+  async getGameForTeams(teams) {
     return new GetGameForTeams(this._db, { teams }).execute();
   }
 
