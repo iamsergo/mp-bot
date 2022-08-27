@@ -1,5 +1,6 @@
 const { Pool } = require('pg');
 const UpdateUser = require('./update-user');
+const GetGameForTeams = require('./get-game-for-teams');
 
 class PgStorage {
   constructor() {
@@ -14,6 +15,10 @@ class PgStorage {
 
   async updateUser(user) {
     return new UpdateUser(this._db, { user }).execute();
+  }
+
+  async getGameByTeams(teams) {
+    return new GetGameForTeams(this._db, { teams }).execute();
   }
 }
 
