@@ -11,7 +11,7 @@ class GetGameForTeams {
       'FROM games',
       'WHERE home_id = (SELECT DISTINCT team_id FROM pseudonames WHERE lower(value) LIKE $1)',
       'AND away_id = (SELECT DISTINCT team_id FROM pseudonames WHERE lower(value) LIKE $2)',
-      'AND time < extract(epoch from now()) * 1000',
+      'AND time > extract(epoch from now()) * 1000',
     ].join(' ');
     const values = [this._home, this._away];
     const { rows } = await this._db.query(sql, values);
