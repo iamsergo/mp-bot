@@ -13,16 +13,26 @@ class PredictionHandler {
     await this._bot.sendMessage(this._msg.chat.id, text);
   }
 
-  async _sendMessageForApplying(game, prediction) {
-    const prePrediction = await this._storage.createPrediction({
-      userId: this._msg.from.id,
-      gameId: game.id,
-      prediction,
-    });
+  async _sendAboutNotAbilityToPrediction() {
+    const text = [
+      'Вы уже сделали прогноз на данный матч, либо он уже начался.',
+    ].join('\n');
+    await this._bot.sendMessage(this._msg.chat.id, text);
+  }
 
+  async _sendAboutHavingPredictionYet() {
+    const text = [
+      'Вы уже сделали прогноз на данный матч. Для одного матча доступен один прогноз!',
+      '',
+      'Чтобы посмотреть свои прогнозы используйте /predictions',
+    ].join('\n');
+    await this._bot.sendMessage(this._msg.chat.id, text);
+  }
+
+  async _sendMessageForApplying(prePrediction, game, score) {
     await this._bot.sendMessage(
       this._msg.chat.id,
-      new PredictionApplyingText(game, prediction).asString(),
+      new PredictionApplyingText(game, score).asString(),
       {
         reply_markup: JSON.stringify({
           inline_keyboard: [
@@ -49,11 +59,24 @@ class PredictionHandler {
     
     const game = await this._storage.getGameForTeams(predictionData.teams);
     if(!game) {
-      await this._sendAboutInvalidMessage();
+      await this._sendAboutNotAbilityToPrediction();
       return;
     }
 
-    await this._sendMessageForApplying(game, predictionData.score);
+    const userId = this._msg.from.id;
+    const gameId = game.id;
+    const yetExist = await this._storage.checkIfPredictionExist({userId, gameId});
+    if(yetExist) {
+      await this._sendAboutHavingPredictionYet();
+      return;
+    }
+
+    const prePrediction = await this._storage.createPrediction({
+      userId,
+      gameId,
+      prediction: predictionData.score,
+    });
+    await this._sendMessageForApplying(prePrediction, game.id, predictionData.score);
   }
 }
 

@@ -4,6 +4,7 @@ const GetGameForTeams = require('./get-game-for-teams');
 const CreatePrediction = require('./create-prediction');
 const ApplyPrediction = require('./apply-prediction');
 const CancelPrediction = require('./cancel-prediction');
+const CheckIfPredictionExist = require('./check-if-prediction-exist');
 
 class PgStorage {
   constructor() {
@@ -22,6 +23,10 @@ class PgStorage {
 
   async getGameForTeams(teams) {
     return new GetGameForTeams(this._db, { teams }).execute();
+  }
+
+  async checkIfPredictionExist(data) {
+    return new CheckIfPredictionExist(this._db, data).execute();
   }
 
   async createPrediction(prediction) {
