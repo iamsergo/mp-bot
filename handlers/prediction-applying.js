@@ -19,7 +19,7 @@ class PredictionApplyingHandler {
     if(!prediction) {
       await this._storage.cancelPrediction(predictionId);
       await this._sendAnswer(
-        new LatePredictionText(prediction).asString()
+        new LatePredictionText().asString()
       );
       return;
     }

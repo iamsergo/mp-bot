@@ -4,8 +4,9 @@ class SuccessApplyingPredictionText {
   }
 
   asString() {
+    const { value, teams: [home, away] } = this._prediction;
     const text = [
-      `Ваш прогноз ${this._prediction.score.join(':')} на матч "${this._prediction.game.home}"-"${this._prediction.game.away}" подтвержден.`,
+      `Ваш прогноз ${value.join(':')} на матч "${home}"-"${away}" подтвержден ✔️`,
     ].join('\n');
     return text;
   }
