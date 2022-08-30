@@ -5,6 +5,8 @@ const CreatePrediction = require('./create-prediction');
 const ApplyPrediction = require('./apply-prediction');
 const CancelPrediction = require('./cancel-prediction');
 const CheckIfPredictionExist = require('./check-if-prediction-exist');
+const GetRating = require('./get-rating');
+const GetRatingForUser = require('./get-rating-for-user');
 
 class PgStorage {
   constructor() {
@@ -39,6 +41,14 @@ class PgStorage {
 
   async cancelPrediction(predictionId) {
     return new CancelPrediction(this._db, { predictionId }).execute();
+  }
+
+  async getRating() {
+    return new GetRating(this._db).execute();
+  }
+
+  async getRatingForUser(userId) {
+    return new GetRatingForUser(this._db, { userId }).execute();
   }
 }
 
