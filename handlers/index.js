@@ -9,6 +9,7 @@ const MyPredictionsHandler = require('./my-predictions');
 const UserPredictionsHandler = require('./user-predictions');
 const GamePredictionsHandler = require('./game-predictions');
 const TeamsHandler = require('./teams');
+const RulesHandler = require('./rules');
 
 module.exports = {
   MessageHandler,
@@ -22,4 +23,5 @@ module.exports = {
   UserPredictionsHandler,
   GamePredictionsHandler,
   TeamsHandler,
+  RulesHandler,
 };

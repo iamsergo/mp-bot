@@ -8,6 +8,7 @@ const MyPredictionsCommandMatch = require('./my-predictions');
 const UserPredictionsCommandMatch = require('./user-predictions');
 const GamePredictionsCommandMatch = require('./game-predictions');
 const TeamsCommandMatch = require('./teams');
+const RulesCommandMatch = require('./rules');
 
 module.exports = {
   PredictionCommandMatch,
@@ -20,4 +21,5 @@ module.exports = {
   UserPredictionsCommandMatch,
   GamePredictionsCommandMatch,
   TeamsCommandMatch,
+  RulesCommandMatch,
 };
