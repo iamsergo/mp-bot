@@ -4,6 +4,7 @@ const AlwaysTrueMatcher = require('./always-true');
 const PredictionApplyingCommandMatch = require('./prediction-apply');
 const PredictionCancelCommandMatch = require('./prediction-cancel');
 const RatingCommandMatch = require('./rating');
+const MyPredictionsCommandMatch = require('./my-predictions');
 
 module.exports = {
   PredictionCommandMatch,
@@ -12,4 +13,5 @@ module.exports = {
   PredictionApplyingCommandMatch,
   PredictionCancelCommandMatch,
   RatingCommandMatch,
+  MyPredictionsCommandMatch,
 };

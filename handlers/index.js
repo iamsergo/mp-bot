@@ -5,6 +5,7 @@ const PredictionHandler = require('./prediction');
 const PredictionCancelHandler = require('./prediction-cancel');
 const PredictionApplyingHandler = require('./prediction-applying');
 const RatingHandler = require('./rating');
+const MyPredictionsHandler = require('./my-predictions');
 
 module.exports = {
   MessageHandler,
@@ -14,4 +15,5 @@ module.exports = {
   PredictionCancelHandler,
   PredictionApplyingHandler,
   RatingHandler,
+  MyPredictionsHandler,
 };
