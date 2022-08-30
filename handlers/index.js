@@ -4,6 +4,7 @@ const DefaultHandler = require('./default.js');
 const PredictionHandler = require('./prediction');
 const PredictionCancelHandler = require('./prediction-cancel');
 const PredictionApplyingHandler = require('./prediction-applying');
+const RatingHandler = require('./rating');
 
 module.exports = {
   MessageHandler,
@@ -12,4 +13,5 @@ module.exports = {
   PredictionHandler,
   PredictionCancelHandler,
   PredictionApplyingHandler,
+  RatingHandler,
 };
