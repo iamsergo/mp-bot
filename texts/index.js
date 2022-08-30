@@ -5,6 +5,7 @@ const RatingText = require('./rating');
 const MyPredictionsText = require('./my-predictions');
 const UserPredictionsText = require('./user-predictions');
 const GamePredictionsText = require('./game-predictions');
+const TeamsText = require('./teams');
 
 module.exports = {
   MenuText,
@@ -14,4 +15,5 @@ module.exports = {
   MyPredictionsText,
   UserPredictionsText,
   GamePredictionsText,
+  TeamsText,
 };
