@@ -12,6 +12,7 @@ const GetUserPredictions = require('./get-user-predictions');
 const GetGameByTeams = require('./get-game-by-teams');
 const GetPredictionsForGame = require('./get-predictions-for-game');
 const GetTeams = require('./get-teams');
+const GetGames = require('./get-games');
 
 class PgStorage {
   constructor() {
@@ -74,6 +75,10 @@ class PgStorage {
 
   async getTeams() {
     return new GetTeams(this._db).execute();
+  }
+
+  async getGames() {
+    return new GetGames(this._db).execute();
   }
 }
 
