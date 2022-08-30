@@ -7,6 +7,7 @@ const UserPredictionsText = require('./user-predictions');
 const GamePredictionsText = require('./game-predictions');
 const TeamsText = require('./teams');
 const RulesText = require('./rules');
+const GamesText = require('./games');
 
 module.exports = {
   MenuText,
@@ -18,4 +19,5 @@ module.exports = {
   GamePredictionsText,
   TeamsText,
   RulesText,
+  GamesText,
 };
