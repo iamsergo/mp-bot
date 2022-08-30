@@ -3,6 +3,7 @@ const DiffForScore = require('./diff-for-score');
 const { default: ResultForScore } = require('./result-for-score');
 const TotalForScore = require('./total-for-score');
 const UserPredictionsDataFromText = require('./user-predictions-data-from-text');
+const GameDataFromText = require('./game-data-from-text');
 
 module.exports = {
   PredictionDataFromText,
@@ -10,4 +11,5 @@ module.exports = {
   ResultForScore,
   TotalForScore,
   UserPredictionsDataFromText,
+  GameDataFromText,
 };

@@ -4,6 +4,7 @@ const PredictionApplyingText = require('./prediction-applying');
 const RatingText = require('./rating');
 const MyPredictionsText = require('./my-predictions');
 const UserPredictionsText = require('./user-predictions');
+const GamePredictionsText = require('./game-predictions');
 
 module.exports = {
   MenuText,
@@ -12,4 +13,5 @@ module.exports = {
   RatingText,
   MyPredictionsText,
   UserPredictionsText,
+  GamePredictionsText,
 };
