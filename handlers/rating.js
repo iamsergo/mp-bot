@@ -10,7 +10,6 @@ class RatingHandler {
   async execute() {
     const rating = await this._storage.getRating();
     const ratingForUser = await this._storage.getRatingForUser(this._msg.chat.id);
-    console.log(ratingForUser);
     await this._bot.sendMessage(
       this._msg.chat.id,
       new RatingText(rating, ratingForUser).asString()
