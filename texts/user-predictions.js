@@ -1,21 +1,22 @@
 const PredictionText = require('./prediction');
 
-class MyPredictionsText {
-  constructor(predictions) {
+class UserPredictionsText {
+  constructor(predictions, username) {
     this._predictions = predictions;
+    this._username = username;
   }
 
   asString() {
     const predictionsText = this._predictions.length === 0
-      ? 'У вас пока нет прогнозов.'
+      ? `У @${this._username} пока нет прогнозов.`
       : this._predictions.map(p => new PredictionText(p).asString()).join('\n\n');
 
     const text = [
-      '🎯 Ваши прогнозы:',
+      `🎯 Прогнозы @${this._username}:`,
       predictionsText,
     ].join('\n\n')
     return text;
   }
 }
 
-module.exports = MyPredictionsText;
+module.exports = UserPredictionsText;
